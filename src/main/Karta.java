@@ -1,7 +1,7 @@
 package main;
 
 /**
- * Created by Администратор on 26.04.2017.
+ * @author  Konstantyn PRysiazhnyi on 26.04.2017.
  */
 public class Karta {
     private int nrKarty =0;

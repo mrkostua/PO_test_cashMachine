@@ -17,12 +17,12 @@ public class Test {
         Bankomat bankomat = new Bankomat(1);
         bankomat.addWplate(konto,100);
         bankomat.addWyplate(konto,300);
-        System.out.println("\n dostepne srodki po dzialaniu" +konto.getDostepneSrodke());
-        System.out.println("\n");
-        System.out.println(bankomat);
+        System.out.println("\n dostepne srodki po dzialaniu" +konto.getDostepneSrodke() + "\n");
+        System.out.println(" bankomat :" + bankomat.toString());
 
         System.out.println("\n");
         Bankomat bankomat0 = new Bankomat(0);
+
         bankomat0.addPrzelew(konto1,100,konto);
         bankomat0.wydrukujTransakcje(LocalDate.now(),111);
         System.out.println("\n");
@@ -30,6 +30,14 @@ public class Test {
         bankomat0.addWplate(konto2,300);
         System.out.println(bankomat0);
         bankomat.wydrukujTransakcje(LocalDate.now().minusDays(1),111);
+
+        System.out.println("\n Resetowanie wszystkich transakcji w danym bankomacie dostepne" +
+                " tylko za pomoca kodu autoryzacjyjnego ");
+        bankomat.resetowanieTransakcji(111);
+
+
+        System.out.println("\n Wyswietlanie wszystkich transakcji na okreslonym koncie :" + konto2.toString());
+        konto2.wyswietlWszystkieTransakcje();
     }
 
 }

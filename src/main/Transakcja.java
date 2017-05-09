@@ -24,7 +24,7 @@ public class Transakcja {
 
     @Override
     public String toString() {
-        return "main.Transakcja{" +
+        return "Transakcja {" +
                 "nrKonta=" + nrKonta +
                 ", data=" + data +
                 '}';

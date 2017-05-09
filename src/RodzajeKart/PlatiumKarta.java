@@ -3,7 +3,7 @@ package RodzajeKart;
 import main.Karta;
 
 /**
- * Created by Администратор on 26.04.2017.
+ * @author  Konstantyn PRysiazhnyi on 26.04.2017.
  */
 public class PlatiumKarta extends Karta {
 

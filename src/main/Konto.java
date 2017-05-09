@@ -1,7 +1,6 @@
 package main;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,19 +11,14 @@ public class Konto {
     private String nazwiskoWlasciciela="";
     private String imieWlasciciela="";
     private int dostepneSrodke = 0;
+    private List<Transakcja> transakcjiNaOdzielnymKoncieList = new ArrayList<>();
 
     public int getDostepneSrodke() {
         return dostepneSrodke;
     }
-//private int[] listIstniejacychKont = {22,111,333,444,555,666};
-
-    private List<Transakcja> transakcjiNaOdzielnymKoncieList = new ArrayList<>();
-
-
     public void setDostepneSrodke(int dostepneSrodke) {
         this.dostepneSrodke = this.dostepneSrodke + dostepneSrodke;
     }
-
     public int getNrKonta() {
         return nrKonta;
     }
@@ -41,14 +35,6 @@ public class Konto {
         transakcjiNaOdzielnymKoncieList.add(new Transakcja(nrKontaWplaty));
         return true;
     }
-
-    /*rivate boolean czyKontoIstnieje(int nrKonta){
-        for(int i : listIstniejacychKont){
-            if(i == nrKonta)
-                return true;
-        }
-        return false;
-    }*/
 
     public boolean wyplataSrodkow(int wyplata,int nrKontaWyplaty){
         if(wyplata>dostepneSrodke){

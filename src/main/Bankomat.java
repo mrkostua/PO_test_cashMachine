@@ -14,13 +14,11 @@ public class Bankomat {
     private static final String nazwaBanku = naleznoscDoBanku[1];
     private static final String lokalizacja = "bankomat 2 Warszawska 2 ";
     private List<Transakcja> transakcjaList = new ArrayList<>();
-
     private int doKtoregoNalezy = 0;
 
 
     /**
-     *
-     * @param doKtoregoNalezy bank do ktorego nalezy
+     * @param doKtoregoNalezy bank do ktorego nalezy bankomat
      */
     public Bankomat(int doKtoregoNalezy){
         this.doKtoregoNalezy = doKtoregoNalezy;
@@ -32,7 +30,7 @@ public class Bankomat {
         String wszystko = "";
         System.out.println("wszystkie transakcje zrobione z konta " );
         for (Transakcja t : transakcjaList){
-            wszystko =" \n " + wszystko + t.toString();
+            wszystko =" " + wszystko + t.toString();
         }
         wszystko += "\n ilosc wszystkich transakcji to :" +   numerTrasakcji++;
         return wszystko;
@@ -56,13 +54,13 @@ public class Bankomat {
 
     public boolean resetowanieTransakcji(int kodAutoryzacyjny){
         if(kodAutotzacyjny == 111) {
+            System.out.println("resetowanie zakonczylo sie pozytywnie");
             transakcjaList=null;
         }else
             System.out.println("nie masz uprawien");
 
         return false;
     }
-
 
     public void addWplate(Konto konto,int sumaWplata){
         if(doKtoregoBankuNalezy()){
@@ -73,8 +71,6 @@ public class Bankomat {
             konto.wplataSrodkow(konto.getNrKonta(),result );
             numerTrasakcji++;
         }
-
-
         transakcjaList.add(new Transakcja(konto.getNrKonta()));
         wydrukujTransakcje(new Transakcja(konto.getNrKonta()),sumaWplata);
     }
@@ -82,11 +78,11 @@ public class Bankomat {
     public void addWyplate(Konto konto, int sumaWyplata){
         if(doKtoregoBankuNalezy()){
             konto.wyplataSrodkow(konto.getNrKonta(),sumaWyplata);
-        }else {
+        }
+        else {
             int result = sumaWyplata/5;
             result = result * 100 + sumaWyplata;
             konto.wyplataSrodkow(konto.getNrKonta(), result );
-
         }
         transakcjaList.add(new Transakcja(konto.getNrKonta()));
         numerTrasakcji++;
@@ -96,9 +92,9 @@ public class Bankomat {
 
     //transakcj nalezy do  innego banku (5% od sumy transk zabiera bank)dolicza do transk 5 %
     private boolean doKtoregoBankuNalezy(){
-        if(naleznoscDoBanku[doKtoregoNalezy].equals(nazwaBanku)){
+        if(naleznoscDoBanku[doKtoregoNalezy].equals(nazwaBanku))
             return true;
-        } else
+         else
             return  false;
     }
 
